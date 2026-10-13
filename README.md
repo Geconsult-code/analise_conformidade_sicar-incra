@@ -142,6 +142,33 @@ Antes de rodar, ajuste os caminhos no topo de cada script (`PASTA_SICAR`,
 estados encontrados; para validar com um estado só, preencha
 `SOMENTE_ESTES = ["AC"]` no topo do script.
 
+> **Pasta renomeada.** A pasta de trabalho `GEODATABASE\INCRA-CAR\Analise_Conformidade`
+> passou a ser `GEODATABASE\Analise_Conformidade_CAR-INCRA\Resultados_Analise_Conformidade`.
+> Os scripts 2 a 6 ainda apontam para o nome antigo em `PASTA_ANALISE` / `BASE_ROOT`.
+
+### Dados de entrada e backup
+
+Todos os insumos e a pasta de trabalho estão no backup do projeto e podem ser
+restaurados com o repositório [`backup_planaveg_2026`](https://github.com/Geconsult-code/backup_planaveg_2026)
+(`python restaurar_backup.py --repo conformidade --destino <pasta>`):
+
+| Script / variável | Conteúdo | No backup | Restaurado em `<pasta>\` |
+|---|---|---|---|
+| 1: `SIGEF_ARQ`, `SNCI_ARQ` | SIGEF e SNCI nacionais de 10/06/2026 (camadas *Privado*) | `Cadastro_INCRA\INCRA_SIGEF_SNCI_Brasil_20260610.zip` | `Analise_Conformidade_CAR-INCRA\INCRA\SIGEF`, `\SNCI` |
+| 1: `PASTA_SAIDA` / 4: `PASTA_INCRA` | `SIGEF_Privado_<UF>`, `SNCI_Privado_<UF>` | `Cadastro_INCRA\INCRA_SIGEF_SNCI_Privado_por_UF.zip` | `Analise_Conformidade_CAR-INCRA\INCRA` |
+| 2 e 5: `PASTA_SICAR` | SICAR bruto de maio/2026, uma pasta por estado com 9 zips | `Cadastro_Ambiental_Rural\BASE_CAR_ESTADOS_05_2026\<ESTADO>.zip` | `Analise_Conformidade_CAR-INCRA\SICAR_BASE_CAR_ESTADOS_05_2026` |
+| 2 a 6: `PASTA_ANALISE` / `BASE_ROOT` | `dados_saída_<UF>` (sem `<UF>_shapefile`) | `Analise_Conformidade_CAR-INCRA\Resultados_Analise_Conformidade\dados_saida_<UF>.zip` | `Analise_Conformidade_CAR-INCRA\Resultados_Analise_Conformidade` |
+
+### Utilitário: `dissolver_car_total.py`
+
+Dissolve, por UF, a área de todos os imóveis do CAR em duas categorias
+(analisado / não analisado, com o não analisado recortado pelo analisado) e grava
+um GeoPackage com até 54 feições. Gerou os CARs dissolvidos por UF usados pelo
+cômputo e pela visualização (backup: `Analise_Territorial_CAR-INCRA_dissolvido`).
+Recuperado do histórico do `cruzamento_vegetacao-secundaria`; o CONFIG traz a
+estrutura de entrada de ago/2026 e, comentada, a estrutura atual (`dados_saída_<UF>`),
+que precisa ser validada com um estado antes do lote.
+
 ---
 
 ## Fluxo em um olhar (núcleo `preparar`/`analisar`)
@@ -415,6 +442,7 @@ conformidade/                  # biblioteca (núcleo reutilizável)
 4_analise_conformidade.py      # pipeline de produção, passo 4: coerência SICAR x INCRA
 5_extracao_APP_RL_AUR.py       # pipeline de produção, passo 5: recorte temático
 6_validacao_resultados.py      # pipeline de produção, passo 6: relatório + correção de geometrias
+dissolver_car_total.py         # utilitário: CAR dissolvido por UF (analisado / não analisado)
 docs/metodologia.md            # documentação científica
 exemplos/teste_nucleo.py       # testes automatizados do núcleo
 ```

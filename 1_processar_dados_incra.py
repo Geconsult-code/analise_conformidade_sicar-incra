@@ -15,7 +15,7 @@ para você completar só o que falta.
 
 COMO USAR
 ---------
-1. Preencha os TRÊS caminhos na seção CONFIG abaixo (SIGEF, SNCI, pasta destino).
+1. Confira os TRÊS caminhos na seção CONFIG abaixo (SIGEF, SNCI, pasta destino).
 2. Com o ambiente 'geo' ativo, rode:
 
        python 1_processar_dados_incra.py
@@ -34,9 +34,12 @@ import geopandas as gpd
 # =============================== CONFIG ===============================
 # Caminhos das DUAS camadas de entrada (shapefile .shp ou geopackage .gpkg).
 # Se for geopackage, informe o nome da camada em SIGEF_CAMADA / SNCI_CAMADA.
-SIGEF_ARQ = r"PREENCHER\SIGEF_Brasil.shp"
+# Downloads do acervo fundiário do INCRA de 10/06/2026, camadas de natureza PRIVADA
+# (no backup: Cadastro_INCRA\INCRA_SIGEF_SNCI_Brasil_20260610.zip; restaurados em
+# <raiz>\Analise_Conformidade_CAR-INCRA\INCRA\SIGEF e \SNCI).
+SIGEF_ARQ = r"C:\Users\User\Dropbox\Geoinformation\GEOINFO BRASIL\INCRA\SIGEF\Sigef Privado.shp"
 SIGEF_CAMADA = None          # ex.: "sigef" se for .gpkg; None para shapefile
-SNCI_ARQ = r"PREENCHER\SNCI_Brasil.shp"
+SNCI_ARQ = r"C:\Users\User\Dropbox\Geoinformation\GEOINFO BRASIL\INCRA\SNCI\Imóvel certificado SNCI Privado.shp"
 SNCI_CAMADA = None
 
 # Pasta onde salvar os arquivos por estado.
