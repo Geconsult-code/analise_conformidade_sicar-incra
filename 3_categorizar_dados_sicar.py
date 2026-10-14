@@ -54,7 +54,8 @@ import pandas as pd
 from conformidade.io_dados import ler_camada, escrever_camada
 
 # =============================== CONFIG ===============================
-PASTA_ANALISE = r"C:\Users\User\Dropbox\#CONSULTANCY\PLANAVEG\GEODATABASE\INCRA-CAR\Analise_Conformidade"
+# Pastas de dados: ver conformidade/caminhos.py (backup restaurado via PLANAVEG_RAIZ ou Dropbox).
+from conformidade.caminhos import PASTA_ANALISE  # noqa: E402
 
 SOMENTE_ESTES: list[str] = []   # ex.: ["AC"] para validar; [] = todas as 27 UFs
 COL_FASE = "des_condic"

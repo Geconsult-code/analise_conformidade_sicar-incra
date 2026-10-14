@@ -53,8 +53,8 @@ from conformidade.io_dados import ler_camada, escrever_camada
 from conformidade.fases import classificar_fase, CANCELADO
 
 # =============================== CONFIG ===============================
-PASTA_ANALISE = r"C:\Users\User\Dropbox\#CONSULTANCY\PLANAVEG\GEODATABASE\INCRA-CAR\Analise_Conformidade"
-PASTA_SICAR = r"C:\Users\User\Dropbox\Geoinformation\GEOINFO BRASIL\SICAR\BASE_CAR_ESTADOS_05_2026"
+# Pastas de dados: ver conformidade/caminhos.py (backup restaurado via PLANAVEG_RAIZ ou Dropbox).
+from conformidade.caminhos import PASTA_ANALISE, PASTA_SICAR  # noqa: E402
 
 # Deixe vazio para TODOS; ou liste siglas (ex.: ["AC"]) para validar.
 SOMENTE_ESTES: list[str] = []

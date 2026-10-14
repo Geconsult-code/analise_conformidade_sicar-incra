@@ -137,20 +137,40 @@ python 5_extracao_APP_RL_AUR.py
 python 6_validacao_resultados.py
 ```
 
-Antes de rodar, ajuste os caminhos no topo de cada script (`PASTA_SICAR`,
-`PASTA_INCRA`, `PASTA_ANALISE`). Por padrão cada um processa **todos** os
-estados encontrados; para validar com um estado só, preencha
-`SOMENTE_ESTES = ["AC"]` no topo do script.
+As pastas de dados (`PASTA_ANALISE`, `PASTA_SICAR`, `PASTA_INCRA` e os arquivos
+SIGEF/SNCI do script 1) ficam num só lugar, [`conformidade/caminhos.py`](conformidade/caminhos.py):
 
-> **Pasta renomeada.** A pasta de trabalho `GEODATABASE\INCRA-CAR\Analise_Conformidade`
-> passou a ser `GEODATABASE\Analise_Conformidade_CAR-INCRA\Resultados_Analise_Conformidade`.
-> Os scripts 2 a 6 ainda apontam para o nome antigo em `PASTA_ANALISE` / `BASE_ROOT`.
+- se `PLANAVEG_RAIZ` aponta para um backup restaurado (com a pasta
+  `Analise_Conformidade_CAR-INCRA`), usa essa estrutura;
+- senão, usa as pastas originais no Dropbox
+  (`GEODATABASE\Analise_Conformidade_CAR-INCRA\Resultados_Analise_Conformidade`,
+  `GEOINFO BRASIL\SICAR\BASE_CAR_ESTADOS_05_2026` e `GEOINFO BRASIL\INCRA`);
+- `CONFORMIDADE_ANALISE`, `CONFORMIDADE_SICAR` e `CONFORMIDADE_INCRA` fixam uma pasta
+  específica, se preciso.
+
+Por padrão cada script processa **todos** os estados encontrados; para validar com um
+estado só, preencha `SOMENTE_ESTES = ["AC"]` no topo do script.
 
 ### Dados de entrada e backup
 
 Todos os insumos e a pasta de trabalho estão no backup do projeto e podem ser
-restaurados com o repositório [`backup_planaveg_2026`](https://github.com/Geconsult-code/backup_planaveg_2026)
-(`python restaurar_backup.py --repo conformidade --destino <pasta>`):
+restaurados com o repositório [`backup_planaveg_2026`](https://github.com/Geconsult-code/backup_planaveg_2026).
+Para rodar em outro computador ou pasta, restaure só o que este repositório usa (cerca de
+261 GB descompactados) e defina `PLANAVEG_RAIZ`:
+
+```powershell
+git clone https://github.com/Geconsult-code/backup_planaveg_2026
+cd backup_planaveg_2026
+# simulação: mostra o volume por pasta e o espaço necessário
+python restaurar_backup.py --backup F:\BKP_PLANAVEG --destino D:\PLANAVEG_DADOS --repo conformidade
+# restauração (pode ser interrompida e retomada)
+python restaurar_backup.py --backup F:\BKP_PLANAVEG --destino D:\PLANAVEG_DADOS --repo conformidade --executar
+# uma vez só; abra um terminal novo depois
+setx PLANAVEG_RAIZ "D:\PLANAVEG_DADOS"
+```
+
+O `conformidade/caminhos.py` passa a usar `<PLANAVEG_RAIZ>\Analise_Conformidade_CAR-INCRA`
+assim que essa pasta existir. Onde cada item fica:
 
 | Script / variável | Conteúdo | No backup | Restaurado em `<pasta>\` |
 |---|---|---|---|

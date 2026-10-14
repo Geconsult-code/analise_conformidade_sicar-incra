@@ -60,8 +60,8 @@ from conformidade.pipeline import (
 )
 
 # =============================== CONFIG ===============================
-PASTA_ANALISE = r"C:\Users\User\Dropbox\#CONSULTANCY\PLANAVEG\GEODATABASE\INCRA-CAR\Analise_Conformidade"
-PASTA_INCRA = r"C:\Users\User\Dropbox\Geoinformation\GEOINFO BRASIL\INCRA"
+# Pastas de dados: ver conformidade/caminhos.py (backup restaurado via PLANAVEG_RAIZ ou Dropbox).
+from conformidade.caminhos import PASTA_ANALISE, PASTA_INCRA  # noqa: E402
 
 # Deixe vazio para TODOS os estados; ou liste siglas (ex.: ["AC"]) para validar.
 SOMENTE_ESTES: list[str] = []

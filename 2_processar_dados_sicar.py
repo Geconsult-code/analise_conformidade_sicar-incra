@@ -66,8 +66,8 @@ from datetime import datetime
 import geopandas as gpd
 
 # =============================== CONFIG ===============================
-PASTA_SICAR = r"C:\Users\User\Dropbox\Geoinformation\GEOINFO BRASIL\SICAR\BASE_CAR_ESTADOS_05_2026"
-PASTA_ANALISE = r"C:\Users\User\Dropbox\#CONSULTANCY\PLANAVEG\GEODATABASE\INCRA-CAR\Analise_Conformidade"
+# Pastas de dados: ver conformidade/caminhos.py (backup restaurado via PLANAVEG_RAIZ ou Dropbox).
+from conformidade.caminhos import PASTA_ANALISE, PASTA_SICAR  # noqa: E402
 
 # Estados a PULAR nesta execução (opcional). Deixe vazio para processar TODOS.
 PULAR: list[str] = []

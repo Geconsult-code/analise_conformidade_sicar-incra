@@ -113,8 +113,8 @@ ARQ_ANALISADO = "{uf}_analisados.gpkg"
 ARQ_NAO_ANALISADO = "{uf}_trabalho.gpkg"
 CAMADA_ENTRADA = "AREA_IMOVEL"      # None = primeira camada do arquivo
 # Estrutura atual (scripts 2 a 6 deste repositório) - NÃO VALIDADO, ver cabeçalho:
-# PASTA_BASE = Path(r"C:\Users\User\Dropbox\#CONSULTANCY\PLANAVEG\GEODATABASE"
-#                   r"\Analise_Conformidade_CAR-INCRA\Resultados_Analise_Conformidade")
+# from conformidade.caminhos import PASTA_ANALISE
+# PASTA_BASE = Path(PASTA_ANALISE)
 # SAIDA = PASTA_BASE.parent / "CAR_total_dissolvido_UF.gpkg"
 # PASTA_UF = r"dados_saída_{uf}\{uf}_geopackage"
 # ARQ_ANALISADO = "{uf}_CAR_Imoveis_Selecionados_Analisados.gpkg"

@@ -54,7 +54,8 @@ gdal.UseExceptions()
 # CONFIGURACAO
 # --------------------------------------------------------------------------
 
-BASE_ROOT = r"C:\Users\User\Dropbox\#CONSULTANCY\PLANAVEG\GEODATABASE\INCRA-CAR\Analise_Conformidade"
+# Pastas de dados: ver conformidade/caminhos.py (backup restaurado via PLANAVEG_RAIZ ou Dropbox).
+from conformidade.caminhos import PASTA_ANALISE as BASE_ROOT  # noqa: E402
 
 EQUAL_AREA_CRS = "EPSG:6933"  # World Cylindrical Equal Area - validado no projeto
 
